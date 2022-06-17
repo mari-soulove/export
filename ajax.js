@@ -18,9 +18,8 @@
 		$.ajax({
 			url: "ajax.php",
 			method: "post",
-			data: {course: $(this).val()},
+			data: {facultet: $(fac).val(), course: $(this).val()},
 			success: function (data) {
-				
 				
 				$("#groups").html(data);
 				console.log(data);

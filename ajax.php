@@ -2,15 +2,14 @@
   require "../includes/config.php";
 
   $post_fac=$_POST['facultet'];
-  $save=(int)$post_fac;
-
+  
   $post_c=$_POST['course'];
   
 
 
 
   
-  if (isset($post_fac)) {
+  if (isset($post_fac) AND empty($post_c)) {
    $course=mysqli_query($connection, "SELECT course FROM `groups`  WHERE fak_id = '$post_fac' GROUP BY course");
 
     while ($cours=mysqli_fetch_assoc($course)) {
@@ -21,8 +20,9 @@
 
 
 
-if (isset($post_c)) {
- $groups=mysqli_query($connection, "SELECT gruppa FROM `groups` WHERE fak_id = '$save' AND course = '$post_c'");
+
+ if (isset($post_c)) {
+ $groups=mysqli_query($connection, "SELECT gruppa FROM `groups` WHERE fak_id = '$post_fac' AND course = '$post_c'");
     while ($group=mysqli_fetch_assoc($groups)) {
 
 
